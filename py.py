@@ -45,9 +45,21 @@ label_title.pack()
 
 
 
-import tkinter.ttk as ttk
+
 
 def action_bouton():
+
+    # barre de défilement
+    scroll_bar = Scrollbar(fenetre)
+    list = Listbox(fenetre, font=('courrier', 9), yscrollcommand=scroll_bar.set)
+    for line in range(1, 26):
+        list.insert(END, "arbre " + str(line))
+        scroll_bar.pack(side=LEFT, fill=Y)
+
+    list.pack(side=LEFT, fill=BOTH)
+    scroll_bar.config(command=list.yview)
+
+
     # frame 2
 
     Frame1 = Frame(fenetre)
@@ -130,7 +142,7 @@ Button(text='quitter', command=callback).pack()
 
 #ajouter un premier boutton
 
-Jouer_button = Button(frame, text="Jouer au jeu ", font=("courrier", 25), bg='black', fg='white', command= action_bouton)
+Jouer_button = Button(frame, text="Jouer au jeu ", font=("courrier", 25), bg='black', fg='white')
 Jouer_button.pack(side = LEFT)
 
 from tkinter.filedialog import *
@@ -145,58 +157,9 @@ def doc():
 
 
 
-def hello():
-
-    about_window = tkinter.Toplevel(fenetre)
-    about_window.title("Informations")
-    about_window.geometry("1200x800")
-    about_window.config(background='#F8D583')
-    charger_doc = Button(about_window,text="charger un doc",command= doc )
-    charger_doc.pack(pady=5)
-
-    #menu 2
-    mainmenu = tkinter.Menu(about_window)
-
-    first_menu = tkinter.Menu(mainmenu, tearoff=0)
-    first_menu.add_command(label="arbre de construction")
-    first_menu.add_command(label="outils")
-    first_menu.add_command(label="autres éléments")
-
-    second_menu = tkinter.Menu(mainmenu, tearoff=0)
-    second_menu.add_command(label="command1")
-    second_menu.add_command(label="command2")
-    second_menu.add_command(label="A propos", command=about)
-
-    mainmenu.add_cascade(label="Menu", menu=first_menu)
-    mainmenu.add_cascade(label="Aide", menu=second_menu)
-
-    about_window.config(menu=mainmenu)
-    about_window.geometry("1200x800")
-    about_window.minsize(460, 300)
-    about_window.config(background='#F8D583')
-
-    # frame 2
-    frame = Frame(about_window, width=310, height=200, bg='#F8D583')
-    #titre 2
-    label_title = Label(about_window, text="Bienvenue à l'espace éditeur")
-    label_title.pack()
-
-    #barre de défilement
-    scroll_bar = Scrollbar(about_window)
-    list = Listbox(about_window, font=('courrier',9), yscrollcommand=scroll_bar.set)
-    for line in range(1, 26):
-        list.insert(END, "arbre " + str(line))
-        scroll_bar.pack(side=LEFT, fill=Y )
-
-    list.pack(side=LEFT, fill=BOTH)
-    scroll_bar.config(command=list.yview)
-    # canevas
-    Canvas(about_window, width=800, height=600, bg='ivory').pack(side=TOP, padx=5, pady=5)
-
-
 
 #ajouter un deuxième boutton
-Editer_button = Button(frame, text="editer ", font=("courrier", 25), bg='black', fg='white', command=hello )
+Editer_button = Button(frame, text="editer ", font=("courrier", 25), bg='black', fg='white',command= action_bouton,)
 Editer_button.pack(side= BOTTOM )
 
 #ajouter
