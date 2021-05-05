@@ -117,15 +117,20 @@ def action_bouton():
     Button3.configure(pady=5,padx=5)
     Button3.configure(text='''Suivant''')
 
-    #bouton de choix
 
 
-    Button(fenetre, text='choix 1', width=20, height=5).pack( padx=5, pady=5, side=LEFT, expand= TRUE)
-    Button(fenetre, text='choix 2', width=20, height=5, ).pack( padx= 5,pady=5, side=LEFT, expand=TRUE)
-    Button(fenetre, text='choix 3', width=20, height=5, ).pack( padx=5, pady=5,side=LEFT,expand=TRUE)
-    Button(fenetre, text='choix 4', width=20, height=5, ).pack( padx=5, pady=5, side= LEFT,expand=TRUE)
+
+
     Jouer_button.destroy()
     Editer_button.destroy()
+
+def choix():
+    Button(fenetre, text='choix 1', width=20, height=5).pack(padx=5, pady=5, side=LEFT, expand=TRUE)
+    Button(fenetre, text='choix 2', width=20, height=5, ).pack(padx=5, pady=5, side=LEFT, expand=TRUE)
+    Button(fenetre, text='choix 3', width=20, height=5, ).pack(padx=5, pady=5, side=LEFT, expand=TRUE)
+    Button(fenetre, text='choix 4', width=20, height=5, ).pack(padx=5, pady=5, side=LEFT, expand=TRUE)
+    Editer_button.destroy()
+    Jouer_button.destroy()
 
 
 #petit message
@@ -142,7 +147,7 @@ Button(text='quitter', command=callback).pack()
 
 #ajouter un premier boutton
 
-Jouer_button = Button(frame, text="Jouer au jeu ", font=("courrier", 25), bg='black', fg='white')
+Jouer_button = Button(frame, text="Jouer au jeu ", font=("courrier", 25), bg='black', fg='white', command=choix, )
 Jouer_button.pack(side = LEFT)
 
 from tkinter.filedialog import *
