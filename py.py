@@ -14,12 +14,12 @@ def about():
 #creer une nouvelle fenetre
 fenetre = tkinter.Tk()
 #personnnaliser ma fenetre
-fenetre.title("Mon jeu livre")
+fenetre.title("Caryophie")
 # widgets
 mainmenu = tkinter.Menu(fenetre)
 
 first_menu = tkinter.Menu(mainmenu, tearoff=0)
-first_menu.add_command(label="arbre de construction")
+first_menu.add_command(label="Notice")
 first_menu.add_command(label="outils")
 first_menu.add_command(label="autres éléments")
 
@@ -106,8 +106,7 @@ def action_bouton():
 
     labelframe5 = LabelFrame(Frame1, text="Barre d'appréciation")
     labelframe5.pack(fill="both", expand="yes")
-    labelframe5.place(relx=0.517, rely=0.345, relheight=0.264
-                       , relwidth=0.448)
+    labelframe5.place(relx=0.517, rely=0.345, relheight=0.264, relwidth=0.448)
 
     scale5 = Scale(labelframe5, variable=v, from_=0.0, to=100.0, orient=HORIZONTAL, len=400, resolution=0.1)
     scale5.pack()
@@ -125,10 +124,17 @@ def action_bouton():
     Editer_button.destroy()
 
 def choix():
+
     Button(fenetre, text='choix 1', width=20, height=5).pack(padx=5, pady=5, side=LEFT, expand=TRUE)
     Button(fenetre, text='choix 2', width=20, height=5, ).pack(padx=5, pady=5, side=LEFT, expand=TRUE)
     Button(fenetre, text='choix 3', width=20, height=5, ).pack(padx=5, pady=5, side=LEFT, expand=TRUE)
     Button(fenetre, text='choix 4', width=20, height=5, ).pack(padx=5, pady=5, side=LEFT, expand=TRUE)
+    # frame choice
+    frame = Frame(fenetre)
+    frame.place(relx=0.026, rely=0.063, relheight=0.6, relwidth=0.924)
+    frame.configure(relief='groove')
+    frame.configure(borderwidth="2")
+    frame.configure(background="#ffffff")
     Editer_button.destroy()
     Jouer_button.destroy()
 
