@@ -40,16 +40,16 @@ frame = Frame(fenetre, width=310, height=200, bg='#F8D583')
 
 label_title = Label(fenetre, text="Bienvenue dans votre nouvelle aventure")
 label_title.pack()
-def text():
-    text = Text().pack(padx=2, pady=2)
-    Button(fen, text='Sauvegarder', width=10, ).pack()
-    Button(fen, text='Quitter', width=10, ).pack()
+
 
 def fen():
     fen = tkinter.Toplevel(fenetre)
     fen.title("Informations")
     fen.geometry("1200x800")
     fen.config(background='#F8D583')
+    text = Text(fen).pack(padx=2, pady=2)
+    Button(fen, text='Sauvegarder', width=10, ).pack()
+    Button(fen, text='Quitter', width=10, ).pack()
 
 
 
