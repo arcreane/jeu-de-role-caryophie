@@ -42,19 +42,16 @@ label_title = Label(fenetre, text="Bienvenue dans votre nouvelle aventure")
 label_title.pack()
 
 
-
-
-
-
-
 def action_bouton():
 
     # barre de défilement
     scroll_bar = Scrollbar(fenetre)
     list = Listbox(fenetre, font=('courrier', 9), yscrollcommand=scroll_bar.set)
+
     for line in range(1, 26):
-        list.insert(END, "arbre " + str(line))
+        list.insert(END, "chapitre" + str(line), )
         scroll_bar.pack(side=LEFT, fill=Y)
+
 
     list.pack(side=LEFT, fill=BOTH)
     scroll_bar.config(command=list.yview)
@@ -111,17 +108,18 @@ def action_bouton():
     scale5 = Scale(labelframe5, variable=v, from_=0.0, to=100.0, orient=HORIZONTAL, len=400, resolution=0.1)
     scale5.pack()
     # bouton suivant
-    Button3 = Button(Frame1)
+    Button3 = Button(Frame1,command= Frame1.destroy)
     Button3.place(relx=0.517, rely=0.621, height=122, width=492)
     Button3.configure(pady=5,padx=5)
     Button3.configure(text='''Suivant''')
 
 
 
-
-
     Jouer_button.destroy()
     Editer_button.destroy()
+
+
+
 
 def choix():
 
@@ -153,7 +151,7 @@ Button(text='quitter', command=callback).pack()
 
 #ajouter un premier boutton
 
-Jouer_button = Button(frame, text="Jouer au jeu ", font=("courrier", 25), bg='black', fg='white', command=choix, )
+Jouer_button = Button(frame, text="Jouer au jeu ", font=("courrier", 25), bg='black', fg='white', command=choix,)
 Jouer_button.pack(side = LEFT)
 
 from tkinter.filedialog import *
