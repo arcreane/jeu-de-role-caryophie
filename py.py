@@ -40,6 +40,20 @@ frame = Frame(fenetre, width=310, height=200, bg='#F8D583')
 
 label_title = Label(fenetre, text="Bienvenue dans votre nouvelle aventure")
 label_title.pack()
+def text():
+    text = Text().pack(padx=2, pady=2)
+    Button(fen, text='Sauvegarder', width=10, ).pack()
+    Button(fen, text='Quitter', width=10, ).pack()
+
+def fen():
+    fen = tkinter.Toplevel(fenetre)
+    fen.title("Informations")
+    fen.geometry("1200x800")
+    fen.config(background='#F8D583')
+
+
+
+
 
 
 def action_bouton():
@@ -108,10 +122,13 @@ def action_bouton():
     scale5 = Scale(labelframe5, variable=v, from_=0.0, to=100.0, orient=HORIZONTAL, len=400, resolution=0.1)
     scale5.pack()
     # bouton suivant
-    Button3 = Button(Frame1,command= Frame1.destroy)
+
+    Button3 = Button(Frame1,command= fen)
+
     Button3.place(relx=0.517, rely=0.621, height=122, width=492)
     Button3.configure(pady=5,padx=5)
     Button3.configure(text='''Suivant''')
+
 
 
 
@@ -153,16 +170,6 @@ Button(text='quitter', command=callback).pack()
 
 Jouer_button = Button(frame, text="Jouer au jeu ", font=("courrier", 25), bg='black', fg='white', command=choix,)
 Jouer_button.pack(side = LEFT)
-
-from tkinter.filedialog import *
-
-def doc():
-    filepath = askopenfilename(title="Ouvrir une image", filetypes=[('png files', '.png'), ('all files', '.*')])
-    photo = PhotoImage(file=filepath)
-    canvas = Canvas(fenetre, width=photo.width(), height=photo.height(), bg="yellow")
-    canvas.create_image(0, 0, anchor=NW, image=photo)
-    canvas.pack()
-
 
 
 
