@@ -41,15 +41,38 @@ frame = Frame(fenetre, width=310, height=200, bg='#F8D583')
 label_title = Label(fenetre, text="Bienvenue dans votre nouvelle aventure")
 label_title.pack()
 
+def chap():
+    text = Text(fen).pack(padx=20, pady=20)
+    Button(fen, text='Sauvegarder', width=10, ).pack()
+    Button(fen, text='Quitter', width=10, command=fen.quit).pack()
+
+
 
 def fen():
     fen = tkinter.Toplevel(fenetre)
     fen.title("Informations")
     fen.geometry("1200x800")
     fen.config(background='#F8D583')
-    text = Text(fen).pack(padx=2, pady=2)
-    Button(fen, text='Sauvegarder', width=10, ).pack()
-    Button(fen, text='Quitter', width=10, ).pack()
+
+    def chap():
+        text = Text(fen).pack(padx=20, pady=20)
+        Button(fen, text='Sauvegarder', width=10, ).pack()
+        Button(fen, text='Quitter', width=10, command=fen.quit).pack()
+
+
+
+
+
+
+
+    create = Button(fen, text='création de chapitre',width=50, height=4, command=chap ).pack(pady=50, padx=50)
+    create1 = Button(fen, text='création objets', width=50, height=4).pack(pady=50, padx=50, side=BOTTOM)
+
+
+
+
+
+
 
 
 
@@ -85,9 +108,27 @@ def action_bouton():
     labelframe1.pack(fill="both", expand="yes")
     labelframe1.place(relx=0.042, rely=0.092, relheight=0.241, relwidth=0.448)
 
+    def select(event):
+        s = int(scale1.get()+scale2.get()+scale3.get()+scale4.get()+scale5.get())
+        print(s)
+        if s > 250:
+            Button3.config(state=DISABLED)
+        else:
+            Button3.config(state=NORMAL)
+
     #widget scale
     v = IntVar
-    scale1 = Scale(labelframe1, variable = v ,from_=0.0, to=100.0, orient= HORIZONTAL, len=400, resolution=0.1)
+
+    Framess = Frame(fenetre)
+    Framess.place(relx=0.425, rely=0.700, relheight=0.15, relwidth=0.15)
+    Framess.configure(relief='groove')
+    Framess.configure(borderwidth="2")
+    Framess.configure(background="#ffffff")
+    label_text = Label(Framess, text="La Valeur doit être <= 250 !")
+    label_text.pack()
+
+    scale1 = Scale(labelframe1, variable = v ,from_=0.0, to=100.0, orient= HORIZONTAL, len=400, resolution=1)
+    scale1.bind("<B1-Motion>", select)
     scale1.pack()
 
 
@@ -96,7 +137,8 @@ def action_bouton():
     labelframe2.place(relx=0.042, rely=0.345, relheight=0.264, relwidth=0.448)
 
 
-    scale2 = Scale(labelframe2, variable=v, from_=0.0, to=100.0, orient=HORIZONTAL, len=400, resolution=0.1)
+    scale2 = Scale(labelframe2, variable=v, from_=0.0, to=100.0, orient=HORIZONTAL, len=400, resolution=1)
+    scale2.bind("<B1-Motion>", select)
     scale2.pack()
 
     labelframe3 = LabelFrame(Frame1, text="Chance")
@@ -104,7 +146,8 @@ def action_bouton():
     labelframe3.place(relx=0.042, rely=0.621, relheight=0.264
                        , relwidth=0.448)
 
-    scale3 = Scale(labelframe3, variable=v, from_=0.0, to=100.0, orient=HORIZONTAL, len=400, resolution=0.1)
+    scale3 = Scale(labelframe3, variable=v, from_=0.0, to=100.0, orient=HORIZONTAL, len=400, resolution=1)
+    scale3.bind("<B1-Motion>", select)
     scale3.pack()
 
     labelframe4 = LabelFrame(Frame1, text="Ruse")
@@ -112,14 +155,16 @@ def action_bouton():
     labelframe4.place(relx=0.517, rely=0.092, relheight=0.241
                        , relwidth=0.448)
 
-    scale4 = Scale(labelframe4, variable=v, from_=0.0, to=100.0, orient=HORIZONTAL, len=400, resolution=0.1)
+    scale4 = Scale(labelframe4, variable=v, from_=0.0, to=100.0, orient=HORIZONTAL, len=400, resolution=1)
+    scale4.bind("<B1-Motion>", select)
     scale4.pack()
 
     labelframe5 = LabelFrame(Frame1, text="Barre d'appréciation")
     labelframe5.pack(fill="both", expand="yes")
     labelframe5.place(relx=0.517, rely=0.345, relheight=0.264, relwidth=0.448)
 
-    scale5 = Scale(labelframe5, variable=v, from_=0.0, to=100.0, orient=HORIZONTAL, len=400, resolution=0.1)
+    scale5 = Scale(labelframe5, variable=v, from_=0.0, to=100.0, orient=HORIZONTAL, len=400, resolution=1)
+    scale5.bind("<B1-Motion>", select)
     scale5.pack()
     # bouton suivant
 
@@ -140,10 +185,6 @@ def action_bouton():
 
 def choix():
 
-    Button(fenetre, text='choix 1', width=20, height=5).pack(padx=5, pady=5, side=LEFT, expand=TRUE)
-    Button(fenetre, text='choix 2', width=20, height=5, ).pack(padx=5, pady=5, side=LEFT, expand=TRUE)
-    Button(fenetre, text='choix 3', width=20, height=5, ).pack(padx=5, pady=5, side=LEFT, expand=TRUE)
-    Button(fenetre, text='choix 4', width=20, height=5, ).pack(padx=5, pady=5, side=LEFT, expand=TRUE)
     # frame choice
     frame = Frame(fenetre)
     frame.place(relx=0.026, rely=0.063, relheight=0.6, relwidth=0.924)
