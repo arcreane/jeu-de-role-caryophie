@@ -41,10 +41,7 @@ frame = Frame(fenetre, width=310, height=200, bg='#F8D583')
 label_title = Label(fenetre, text="Bienvenue dans votre nouvelle aventure")
 label_title.pack()
 
-def chap():
-    text = Text(fen).pack(padx=20, pady=20)
-    Button(fen, text='Sauvegarder', width=10, ).pack()
-    Button(fen, text='Quitter', width=10, command=fen.quit).pack()
+
 
 
 
@@ -59,14 +56,7 @@ def fen():
         Button(fen, text='Sauvegarder', width=10, ).pack()
         Button(fen, text='Quitter', width=10, command=fen.quit).pack()
 
-
-
-
-
-
-
-    create = Button(fen, text='création de chapitre',width=50, height=4, command=chap ).pack(pady=50, padx=50)
-    create1 = Button(fen, text='création objets', width=50, height=4).pack(pady=50, padx=50, side=BOTTOM)
+    create = Button(fen, text='création de page', width=40, height=4, command=chap).pack(pady=50, padx=50, expand=YES)
 
 
 
@@ -78,26 +68,49 @@ def fen():
 
 
 
+
+
+def action():
+    Frame2 = Frame(fenetre)
+    Frame2.place(relx=0.026, rely=0.063, relheight=0.6, relwidth=0.95)
+    Frame2.configure(relief='groove')
+    Frame2.configure(borderwidth="2")
+    Frame2.configure(background="#ffffff")
+
+    ButtonN1 = Button(Frame2,font=("courrier", 22))
+    ButtonN1.place(relx=0.026, rely=0.163)
+    ButtonN1.pack(expand="yes")
+    ButtonN1.config(text='''Creation de monstres''')
+
+    ButtonN2 = Button(Frame2, font=("courrier", 22), command= action_bouton )
+    ButtonN2.place(relx=0.026, rely=0.263)
+    ButtonN2.pack(expand="yes")
+    ButtonN2.config(text='''Creation de héros ''')
+
+    ButtonN3 = Button(Frame2, font=("courrier", 22),command= fen)
+    ButtonN3.place(relx=0.026, rely=0.363)
+    ButtonN3.pack(expand="yes")
+    ButtonN3.config(text='''Page édition de texte ''')
+
+    ButtonN4 = Button(Frame2, font=("courrier", 22))
+    ButtonN4.place(relx=0.026, rely=0.463)
+    ButtonN4.pack(expand="yes")
+    ButtonN4.config(text='''Suivant ''')
+
+    Frame2.pack_forget()
+
+    Jouer_button.destroy()
+    Editer_button.destroy()
 
 def action_bouton():
 
-    # barre de défilement
-    scroll_bar = Scrollbar(fenetre)
-    list = Listbox(fenetre, font=('courrier', 9), yscrollcommand=scroll_bar.set)
 
-    for line in range(1, 26):
-        list.insert(END, "chapitre" + str(line), )
-        scroll_bar.pack(side=LEFT, fill=Y)
-
-
-    list.pack(side=LEFT, fill=BOTH)
-    scroll_bar.config(command=list.yview)
 
 
     # frame 2
 
     Frame1 = Frame(fenetre)
-    Frame1.place(relx=0.026, rely=0.063, relheight=0.6, relwidth=0.924)
+    Frame1.place(relx=0.026, rely=0.063, relheight=0.6, relwidth=0.95)
     Frame1.configure(relief='groove')
     Frame1.configure(borderwidth="2")
     Frame1.configure(background="#ffffff")
@@ -168,7 +181,7 @@ def action_bouton():
     scale5.pack()
     # bouton suivant
 
-    Button3 = Button(Frame1,command= fen)
+    Button3 = Button(Frame1)
 
     Button3.place(relx=0.517, rely=0.621, height=122, width=492)
     Button3.configure(pady=5,padx=5)
@@ -177,8 +190,9 @@ def action_bouton():
 
 
 
-    Jouer_button.destroy()
-    Editer_button.destroy()
+
+
+
 
 
 
@@ -216,7 +230,7 @@ Jouer_button.pack(side = LEFT)
 
 
 #ajouter un deuxième boutton
-Editer_button = Button(frame, text="editer ", font=("courrier", 25), bg='black', fg='white',command= action_bouton,)
+Editer_button = Button(frame, text="editer ", font=("courrier", 25), bg='black', fg='white',command= action,)
 Editer_button.pack(side= BOTTOM )
 
 #ajouter
