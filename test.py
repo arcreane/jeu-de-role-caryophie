@@ -1,13 +1,16 @@
 from tkinter import*
 import tkinter
-#webb lien
 import webbrowser
+
+
 def about():
 
     webbrowser.open_new("https://1drv.ms/w/s!AgV-GZwkjb7Zg7g_tkHUvR1WNL1-xg?e=6FDlUm")
 
 #creer une nouvelle fenetre
 fenetre = tkinter.Tk()
+
+
 #personnnaliser ma fenetre
 fenetre.title("Caryophie")
 # widgets
@@ -25,6 +28,7 @@ second_menu.add_command(label="À propos", command=about)
 
 mainmenu.add_cascade(label="Menu", menu = first_menu)
 mainmenu.add_cascade(label="Aide", menu = second_menu)
+
 import time
 def clock():
     t=time.strftime('%I:%M:%S',time.localtime())
@@ -54,14 +58,15 @@ def fen():
 
     def chap():
         text = Text(fen).pack(padx=20, pady=20)
-        Button(fen, text='Sauvegarder', width=10, ).pack()
-        Button(fen, text='Quitter', width=10, command=fen.quit).pack()
+        Button(fen, text='Sauvegarder', width=10,).pack()
+        Button(fen, text='Quitter', width=10, command=fen.destroy ).pack()
+
 
     create = Button(fen, text='création de page', width=40, height=4, command=chap).pack(pady=50, padx=50, expand=YES)
 
 def action():
     Frame2 = Frame(fenetre)
-    Frame2.place(relx=0.026, rely=0.063, relheight=0.6, relwidth=0.95)
+    Frame2.place(relx=0.026, rely=0.063, relheight=0.8, relwidth=0.95)
     Frame2.configure(relief='groove')
     Frame2.configure(borderwidth="2")
     Frame2.configure(background="#ffffff")
@@ -90,6 +95,9 @@ def action():
     ButtonN4.place(relx=0.026, rely=0.463)
     ButtonN4.pack(expand="yes")
     ButtonN4.config(text='''Suivant ''')
+
+
+
 
     Frame2.pack_forget()
 
@@ -177,10 +185,16 @@ def action_bouton():
     Button3.configure(pady=5,padx=5)
     Button3.configure(text='''Suivant''')
 
+    ButtonN5 = Button(Frame1, font=("courrier", 15), command=Frame1.destroy)
+    ButtonN5.pack()
+    ButtonN5.config(text='''comeback''')
+
 def ajouter_outils():
     page = tkinter.Toplevel(fenetre)
     page.geometry('800x700')
     page.config(background='#F8D583')
+
+
 
     afficher_outil_add = ''
     liste_outils = []
@@ -228,6 +242,11 @@ def ajouter_outils():
 
     button_ajouter_outils = Button(page, text='Ajouter', font=("courrier", 22), command=ajouter_outil_list)
     button_ajouter_outils.pack(padx=3, pady=1, )
+
+    ButtonN5 = Button(page, font=("courrier", 22), command=page.destroy)
+    ButtonN5.place(relx=0.026, rely=0.363)
+    ButtonN5.pack(expand="yes")
+    ButtonN5.config(text='''comeback''')
 
     page.mainloop()
 
@@ -282,6 +301,11 @@ def ajouter_monstre():
 
     button_ajouter_outils = Button(page_1, text='Ajouter', font=("courrier", 22), command=ajouter_monstre_list)
     button_ajouter_outils.pack(padx=3, pady=1, )
+
+    ButtonN5 = Button(page_1, font=("courrier", 22), command=page_1.destroy)
+    ButtonN5.place(relx=0.026, rely=0.363)
+    ButtonN5.pack(expand="yes")
+    ButtonN5.config(text='''comeback''')
 
     page_1.mainloop()
 def choix():
